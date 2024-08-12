@@ -1,13 +1,49 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+:root {
+  --text-dark: #403f3d;
+  --text-light: #e1d4c9;
+  --text-accent: #b0907a;
+  --background-body: #e1d4c9;
+  --background-container: #665f55;
+  --background-backdrop: rgba(64, 63, 61, 0.8);
+  --border-light: #c1b6ad;
+  --border-dark: #665f55;
+  --font-family: "Inter", sans-serif;
+  --second-family: "Manrope", sans-serif;
+}
+
+body {
+  background-color: var(--background-body);
+}
+
+.App {
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.menu__container {
+  margin: 100px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 40px;
+}
+
+.menu__title {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 60px;
+  line-height: 125%;
+  text-align: center;
+  color: var(--text-dark);
+}
+
+.menu__detail {
+  font-style: italic;
+  color: var(--text-accent);
 }
