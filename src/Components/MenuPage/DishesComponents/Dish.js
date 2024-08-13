@@ -1,5 +1,10 @@
+import { useState } from "react"
+import { Quantity } from "../Cart/Quantity"
 
 export const Dish = ({ item }) => {
+
+  const [quantity, setQuantity] = useState(1);
+
   return (
     <div className="menu__box">
       <div className="box__img">
@@ -12,6 +17,7 @@ export const Dish = ({ item }) => {
         </div>
         <div className="box__content-add">
           <p className="box__content-title">${item.price}</p>
+          <Quantity quantity={ quantity } setQuantity={ setQuantity } />
           <button className="box__content-btn">Add</button>
         </div>
       </div>

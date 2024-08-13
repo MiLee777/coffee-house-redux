@@ -1,10 +1,19 @@
+import { useSelector } from "react-redux";
 import { dataMenu } from "../../../Data/dataMenu"
 import { Dish } from "./Dish";
+import { getSelectedCategory } from "../../../redux/dishesSlice";
 
 export const Dishes = () => {
+  
+  const selectedCategory = useSelector(getSelectedCategory);
+
   return (
     <div className="menu__items">
-      {dataMenu.map((item, index) => <Dish item={ item } key={ index }/>)}
+      {dataMenu
+      .filter(item => {
+        return selectedCategory === item.category;
+      })
+      .map((item, index) => <Dish item={item} key={index} />)}
     </div>
   )
 }
