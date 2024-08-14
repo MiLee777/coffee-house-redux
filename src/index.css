@@ -203,3 +203,8 @@ body {
   font-size: 16px;
   line-height: 150%;;
 }
+
+.menu__cart {
+  padding: 10px;
+  cursor: pointer;
+}
