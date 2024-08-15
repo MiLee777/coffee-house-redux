@@ -1,9 +1,12 @@
 import { useState } from "react"
 import { Quantity } from "../Cart/Quantity"
+import { useDispatch } from "react-redux";
+import { addItemToCart } from "../../../redux/cartSlice";
 
 export const Dish = ({ item }) => {
 
   const [quantity, setQuantity] = useState(1);
+  const dispatch = useDispatch();
 
   return (
     <div className="menu__box">
@@ -18,7 +21,18 @@ export const Dish = ({ item }) => {
         <div className="box__content-add">
           <p className="box__content-title">${item.price}</p>
           <Quantity quantity={ quantity } setQuantity={ setQuantity } />
-          <button className="box__content-btn">Add</button>
+          <button className="box__content-btn"
+          // onClick={() => {dispatch(addItemToCart(item, quantity))}}
+          onClick={() => {
+            if (item && item.id) {
+              dispatch(addItemToCart({ item, quantity }));
+            } else {
+              console.error('Item is undefined or missing an id:', item);
+            }
+          }}
+          >
+            Add
+            </button>
         </div>
       </div>
     </div>
