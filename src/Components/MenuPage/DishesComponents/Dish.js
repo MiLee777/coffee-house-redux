@@ -6,6 +6,7 @@ import { addItemToCart } from "../../../redux/cartSlice";
 export const Dish = ({ item }) => {
 
   const [quantity, setQuantity] = useState(1);
+  
   const dispatch = useDispatch();
 
   return (
@@ -22,14 +23,7 @@ export const Dish = ({ item }) => {
           <p className="box__content-title">${item.price}</p>
           <Quantity quantity={ quantity } setQuantity={ setQuantity } />
           <button className="box__content-btn"
-          // onClick={() => {dispatch(addItemToCart(item, quantity))}}
-          onClick={() => {
-            if (item && item.id) {
-              dispatch(addItemToCart({ item, quantity }));
-            } else {
-              console.error('Item is undefined or missing an id:', item);
-            }
-          }}
+          onClick={() => {dispatch(addItemToCart({ item, quantity }))}}
           >
             Add
             </button>
