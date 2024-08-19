@@ -10,7 +10,7 @@ export const ModalCart = ({ setIsOpen, children }) => {
 
   return (
     <div className='modal'>
-      <div className='overlay' onClick={ closeModal }>
+      <div className='modal__overlay' onClick={ closeModal }>
         { children }
       </div>
     </div>

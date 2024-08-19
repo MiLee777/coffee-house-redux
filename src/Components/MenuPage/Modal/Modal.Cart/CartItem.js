@@ -1,17 +1,27 @@
-import { dataMenu } from "../../../../Data/dataMenu"
+import { useDispatch } from "react-redux";
+import { dataMenu } from "../../../../Data/dataMenu";
+import { removeItemFromCart } from "../../../../redux/cartSlice";
 
 export const CartItem = ({ cartItem }) => {
 
-  console.log(cartItem);
-  
   const dishesToCart = dataMenu.find(dish => dish.id === cartItem.id);
-  console.log(dishesToCart);
-  
-  
+  const dispatch = useDispatch();
+
+
+
   return (
     <div className="content">
-      <h2>{ dishesToCart.name }</h2>
-      <p>{ cartItem.quantity }</p>
+      <div className="content__box">
+        <p className="content__text content__price">Price: ${dishesToCart.price * cartItem.quantity}</p>
+        <div className="content__info">
+          <p className="content__text content__name">{dishesToCart.name}</p>
+          <p className="content__text content__portions">{cartItem.quantity} portion(s)</p>
+        </div>
+        <div className="content__box-delete"
+        onClick={() => {dispatch(removeItemFromCart({ cartItemId: cartItem.id }))}}>
+          <box-icon type='solid' name='trash'></box-icon>
+        </div>
+      </div>
     </div>
   )
 }

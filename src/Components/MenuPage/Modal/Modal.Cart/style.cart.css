@@ -1,3 +1,16 @@
+:root {
+  --text-dark: #403f3d;
+  --text-light: #e1d4c9;
+  --text-accent: #b0907a;
+  --background-body: #e1d4c9;
+  --background-container: #665f55;
+  --background-backdrop: rgba(64, 63, 61, 0.8);
+  --border-light: #c1b6ad;
+  --border-dark: #665f55;
+  --font-family: "Inter", sans-serif;
+  --second-family: "Manrope", sans-serif;
+}
+
 .modal {
   position: fixed;
   top: 0;
@@ -7,7 +20,7 @@
   z-index: 100;
 }
 
-.overlay {
+.modal__overlay {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,14 +30,102 @@
   
 }
 
-.modal_content {
+.modal__content {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background-color: #ffffff;
+  background-color: var(--background-body);
+  border-radius: 25px;
   width: 50%;
-  height: 50%;
+  min-height: 50%;
+  position: relative;
 }
 
+.modal__title,
+.modal__subtitle {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 40px;
+  line-height: 125%;
+}
+
+.modal__title {
+  color: var(--text-dark);
+}
+
+.modal__subtitle {
+  color: var(--text-accent);
+}
+
+.modal__btn-delete {
+  padding: 10px 15px;
+  background: var(--background-container);
+  border: none;
+  border-radius: 5px;
+  color: var(--background-body);
+  cursor: pointer;
+}
+
+.modal__btn-close {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  padding: 20px;
+  scale: 1.5;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.modal__container {
+  width: 100%;
+  margin: 20px 0;
+  display: flex;
+  flex-direction: column;
+  row-gap: 20px;
+}
+
+.modal__btn-delete {
+  margin: 20px;
+}
+
+.content {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+.content__box {
+  width: 80%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.content__info {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 5px;
+}
+
+.content__text {
+  font-family: var(--font-family);
+  font-weight: 600;
+  line-height: 125%;
+}
+
+.content__price {
+  font-size: 20px;
+}
+
+.content__name {
+  font-size: 20px;
+  font-weight: bolder;
+}
+
+.content__portions {
+  font-size: 15px;
+}
 

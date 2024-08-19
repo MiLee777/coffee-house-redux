@@ -7,28 +7,39 @@ export const cartSlice = createSlice({
   },
   reducers: {
     addItemToCart: (state, action) => {
-      console.log(action.payload);
-      
+      const timeId = new Date().getTime();
       state.cartItems.push({
+        timeId: timeId,
         id: action.payload.item.id,
         quantity: action.payload.quantity,
+        totalPrice: action.payload.quantity * action.payload.item.price,
       })
+    },
+
+    removeItemFromCart: (state, action) => {
+      state.cartItems = state.cartItems.filter(
+        cartItem => cartItem.id !== action.payload.cartItemId
+      )
+    },
+
+    clearCart: (state) => {
+      state.cartItems = []
     }
-    // addItemToCart(state, action) {
-    //   console.log('Payload received in reducer:', action.payload);
-    //   const { item, quantity } = action.payload;
-    //   if (item && item.id) {
-    //     state.cartItems.push({
-    //       id: item.id,
-    //       quantity: quantity,
-    //     });
-    //   } else {
-    //     console.error('Item is undefined or missing an id in reducer:', item);
-    //   }
-    // }
   }
 })
 
-export const { addItemToCart } = cartSlice.actions;
+export const getTotalPrice = state => {
+  return state.cart.cartItems.reduce((total, cartItem) => {
+    return cartItem.totalPrice + total;
+  }, 0);
+}
+
+export const getTotalQuantity = state => {
+  return state.cart.cartItems.reduce((total, cartItem) => {
+    return cartItem.quantity + total;
+  }, 0);
+}
+
+export const { addItemToCart, removeItemFromCart, clearCart } = cartSlice.actions;
 export const getCartItems = state => state.cart.cartItems;
 export default cartSlice.reducer;

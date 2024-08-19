@@ -1,18 +1,29 @@
 import './style.cart.css';
 import '../../../../index.css';
-import { useSelector } from "react-redux";
-import { getCartItems } from '../../../../redux/cartSlice';
+import { useDispatch, useSelector } from 'react-redux';
+import { clearCart, getCartItems, getTotalPrice } from '../../../../redux/cartSlice';
 import { CartItem } from './CartItem';
 
 
 export const ContentCart = ({ setIsOpen }) => {
 
-  const cartItems = useSelector(getCartItems); 
+  const cartItems = useSelector(getCartItems);
+  const totalPrice = useSelector(getTotalPrice);
+  const dispatch = useDispatch();
 
   return (
-    <div className="modal_content">
-      {cartItems.map((cartItem, index) => <CartItem cartItem={ cartItem } key={ index } />)}
-      <button onClick={() => setIsOpen(false)}>Close</button>
+    <div className='modal__content'>
+      <h2 className='modal__title'>Order list:</h2>
+      <h2 className='modal__subtitle'>Total price: ${ totalPrice }</h2>
+      <div className='modal__container'>
+        {cartItems.map((cartItem, index) => <CartItem cartItem={cartItem} key={index} />)}
+      </div>
+      <button onClick={() => {dispatch(clearCart())}}
+      className='modal__btn-delete'>DELETE ALL</button>
+      <button onClick={() => setIsOpen(false)}
+        className='modal__btn-close'>
+        <box-icon name='x' className='icon-close'></box-icon>
+      </button>
     </div>
   )
 }
