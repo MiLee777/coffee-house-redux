@@ -15,7 +15,7 @@ export const Cart = () => {
       <div onClick={() => setIsOpen(true)}
         className="cart__content">
         <box-icon name='cart' type='solid'></box-icon>
-        <span>{ totalQuantity }</span>
+        <span>{totalQuantity}</span>
       </div>
 
       {isOpen &&

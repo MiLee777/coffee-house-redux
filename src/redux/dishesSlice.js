@@ -1,9 +1,9 @@
-import { createSlice } from '@reduxjs/toolkit';
+import { createSlice } from "@reduxjs/toolkit";
 
 export const dishesSlice = createSlice({
-  name: 'dishes',
+  name: "dishes",
   initialState: {
-    selectedCategory: 'coffee',
+    selectedCategory: "coffee",
   },
   reducers: {
     filterCategory(state, action) {

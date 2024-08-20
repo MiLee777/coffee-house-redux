@@ -1,33 +1,5 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-
-:root {
-  --text-dark: #403f3d;
-  --text-light: #e1d4c9;
-  --text-accent: #b0907a;
-  --background-body: #e1d4c9;
-  --background-container: #665f55;
-  --background-backdrop: rgba(64, 63, 61, 0.8);
-  --border-light: #c1b6ad;
-  --border-dark: #665f55;
-  --font-family: "Inter", sans-serif;
-  --second-family: "Manrope", sans-serif;
-}
-
-body {
-  background-color: var(--background-body);
-}
-
-.App {
-  max-width: 1440px;
-  margin: 0 auto;
-}
-
 .menu__container {
-  margin: 100px 40px;
+  margin: 0 40px 60px 40px;
   display: flex;
   flex-direction: column;
   align-items: center;
