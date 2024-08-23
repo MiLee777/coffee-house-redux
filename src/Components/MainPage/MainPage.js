@@ -1,7 +1,9 @@
+import { Enjoy } from "./Components/Enjoy"
+
 export const MainPage = () => {
   return (
-    <div>
-      Main Page
-    </div>
+    <main className="main">
+      <Enjoy />
+    </main>
   )
 }
