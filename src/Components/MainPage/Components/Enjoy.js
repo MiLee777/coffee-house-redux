@@ -5,14 +5,14 @@ export const Enjoy = () => {
   return (
     <section className="main__enjoy">
       <div className="container enjoy__container">
-        <video autoplay="autoplay" 
-        loop="loop" 
-        muted 
-        defaultMuted 
-        playsInline
-        className="enjoy__video">
-          <source src={ Video }
-          type="video/mp4" />
+        <video autoPlay="autoplay"
+          loop="loop"
+          muted
+          defaultmuted="true"
+          playsInline
+          className="enjoy__video">
+          <source src={Video}
+            type="video/mp4" />
         </video>
         <div className="enjoy__content">
           <h1 className="enjoy__title">
