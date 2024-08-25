@@ -1,8 +1,6 @@
 import { useEffect, useState } from "react";
 import { dataFavoriteCoffee } from "../../../Data/dataFavoriteCoffee";
 
-
-
 export const Favorite = () => {
 
   const [itemCoffee, setItemCoffee] = useState(0);
