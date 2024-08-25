@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { dataFavoriteCoffee } from "../../../Data/dataFavoriteCoffee";
 
 
@@ -7,6 +7,14 @@ export const Favorite = () => {
 
   const [itemCoffee, setItemCoffee] = useState(0);
   const { title, image, description, price } = dataFavoriteCoffee[itemCoffee];
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setItemCoffee((prevItem) => (prevItem + 1) % dataFavoriteCoffee.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
 
   const handleNextSliderBtn = () => {
     setItemCoffee(item => {
@@ -72,9 +80,11 @@ export const Favorite = () => {
           </button>
         </div>
         <div className="favorite__slider-dots">
-          <div className="dot"></div>
-          <div className="dot"></div>
-          <div className="dot"></div>
+          {dataFavoriteCoffee.map((_, index) => (
+            <div
+            key={ index }
+            className={`dot ${ index === itemCoffee ? "dot__active" : "" }`} />
+          ))}
         </div>
 
       </div>
