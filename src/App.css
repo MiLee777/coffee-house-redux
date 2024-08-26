@@ -32,6 +32,7 @@ body {
 .App {
   max-width: 1440px;
   margin: 0 auto;
+  padding-bottom: 40px;
 }
 
 button {
@@ -352,11 +353,14 @@ li {
   row-gap: 16px;
 }
 
-.slider__title {
+.subtitle {
   font-family: var(--font-family);
   font-weight: 600;
   font-size: 24px;
   line-height: 125%;
+}
+
+.slider__title {
   color: var(--text-dark);
 }
 
@@ -365,10 +369,10 @@ li {
   font-weight: 400;
   font-size: 16px;
   line-height: 150%;
-  color: var(--text-dark);
 }
 
 .slider__text {
+  color: var(--text-dark);
   text-align: center;
 }
 
@@ -491,13 +495,12 @@ li {
   }
 }
 
-
 /* ================= MOBILE APP ================= */
 .mobile-app__container {
-  padding: 100px 0;
+  padding-top: 60px;
   display: flex;
-    align-items: center;
-    column-gap: 100px;
+  align-items: center;
+  column-gap: 100px;
 }
 
 .mobile-app__content {
@@ -508,8 +511,8 @@ li {
 
 .mobile-app__btns {
   display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    column-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+  column-gap: 20px;
 }
 
 .mobile-app__btn-store {
@@ -531,7 +534,7 @@ li {
 }
 
 .mobile-app__btn-store:hover svg path {
-  fill: #E1D4C9;
+  fill: #e1d4c9;
 }
 
 .btn-store {
@@ -557,7 +560,7 @@ li {
 
 .access {
   font-size: 10px;
-  line-height: 140%; 
+  line-height: 140%;
 }
 
 .store {
@@ -567,36 +570,177 @@ li {
 
 /* ================= BREAKPOINTS ================= */
 /* For large devices */
-@media all and (max-width:1200px) {
+@media all and (max-width: 1200px) {
   .mobile-app__container {
-      margin-top: 74px;
-      flex-direction: column;
-      row-gap: 100px;
+    margin-top: 74px;
+    flex-direction: column;
+    row-gap: 100px;
   }
 
   .mobile-app__btns {
-      grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 
 /* For medium devices */
-@media all and (max-width:710px) {
+@media all and (max-width: 710px) {
   .mobile-app__container img {
     width: 100%;
   }
-  
 }
 
-@media all and (max-width:500px) {
+@media all and (max-width: 500px) {
   .mobile-app__container {
     row-gap: 40px;
-}
+  }
 }
 
-@media all and (max-width:450px) {
+@media all and (max-width: 450px) {
   .mobile-app__btns {
-      display: flex;
-      flex-direction: column;
-      row-gap: 20px;
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+  }
+}
+
+/* ================= FOOTER ================= */
+.footer__container {
+  margin-top: 100px;
+  padding: 100px;
+  background: var(--background-container);
+  border-radius: 40px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.footer__contact {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  column-gap: 100px;
+}
+
+.footer__content {
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+}
+
+.footer__title {
+  color: var(--text-light);
+}
+
+.contact__social-media {
+  display: flex;
+  column-gap: 12px;
+}
+
+.social-media {
+  width: 60px;
+  height: 60px;
+  border-radius: 100px;
+  border: 1px solid var(--border-light);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+}
+
+.social-media:hover {
+  background: var(--background-body);
+}
+
+.social-media svg path {
+  transition: 0.5s ease-in-out;
+}
+
+.social-media:hover svg path {
+  stroke: #403f3d;
+}
+
+.contact__info {
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  row-gap: 40px;
+}
+
+.info__title {
+  color: var(--text-light);
+}
+
+.container__info {
+  display: grid;
+  row-gap: 20px;
+}
+
+.info {
+  display: flex;
+  column-gap: 9px;
+  color: var(--text-light);
+  font-family: var(--font-family);
+  align-self: center;
+  line-height: 150%;
+}
+
+.info__box {
+  display: flex;
+}
+
+.info__link {
+  position: relative;
+}
+
+.info__link::after {
+  width: 34%;
+  content: "";
+  position: absolute;
+  background-color: #e1d4c9;
+  height: 2px;
+  bottom: -6px;
+  left: 0;
+  opacity: 0;
+  transform: scaleX(0);
+  transition: transform 0.5s ease-in-out, opacity 0.7s ease-in-out;
+}
+
+.info__link:hover::after {
+  transform: scaleX(1);
+  opacity: 1;
+  transition: transform 0.5s ease-in-out, opacity 0.7s ease-in-out;
+}
+
+.info__link:hover::before {
+  transform: scaleX(1);
+  opacity: 0;
+}
+
+/* ================= BREAKPOINTS ================= */
+/* For large devices */
+@media all and (max-width: 1200px) {
+  .footer__container {
+    padding: 100px 60px;
+  }
+
+  .footer__contact {
+    display: flex;
+    flex-direction: column;
+    row-gap: 100px;
+  }
+
+  .contact__info {
+    align-self: flex-start;
+  }
+}
+
+/* For medium devices */
+@media all and (max-width: 500px) {
+  .footer__container {
+    padding: 60px 16px;
+  }
+
+  .contact__info {
+    margin-top: 42px;
   }
 }
