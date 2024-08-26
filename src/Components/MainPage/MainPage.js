@@ -1,6 +1,7 @@
 import { About } from "./Components/About";
 import { Enjoy } from "./Components/Enjoy";
 import { Favorite } from "./Components/Favorite";
+import { MobileApp } from "./Components/Mobile";
 
 export const MainPage = () => {
   return (
@@ -8,6 +9,7 @@ export const MainPage = () => {
       <Enjoy />
       <Favorite />
       <About />
+      <MobileApp />
     </main>
   )
 }

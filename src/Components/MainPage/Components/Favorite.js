@@ -59,7 +59,7 @@ export const Favorite = () => {
               <img src={`../assets/images/favorite-coffee/${ image }.png`} alt="Coffee"/>
               <div className="slider__description">
                 <h3 className="slider__title">{ title }</h3>
-                <p className="slider__text">{ description }</p>
+                <p className="text slider__text">{ description }</p>
                 <p className="slider__title">${ price.toFixed(2) }</p>
               </div>
           </div>
