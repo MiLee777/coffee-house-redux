@@ -35,9 +35,9 @@ export const Favorite = () => {
   }
   
   return (
-    <section className="favorite">
+    <section className="favorite" id="favorite">
       <div className="container favorite__container">
-        <h2 className="title">
+        <h2 className="title favorite__title">
           Choose your 
           <span className="italic"> favorite </span> 
           coffee

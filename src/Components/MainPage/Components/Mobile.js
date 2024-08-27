@@ -2,7 +2,7 @@ import AppImage from "../../../assets/mobile-screens.png";
 
 export const MobileApp = () => {
   return (
-    <section className="mobile-app">
+    <section className="mobile-app" id="mobile">
       <div className="container mobile-app__container">
         <div className="mobile-app__content">
           <h2 className="title">

@@ -3,11 +3,10 @@
 *:before {
   margin: 0;
   padding: 0;
-  box-sizing: inherit;
+  box-sizing: border-box;
 }
 
 html {
-  box-sizing: border-box;
   scroll-behavior: smooth;
   height: 100%;
 }
@@ -112,12 +111,13 @@ li {
   .header__nav {
     position: fixed;
     top: 0;
-    right: -100%;
-    width: 100%;
+    right: -100vw;
+    width: 100vw;
     height: 100vh;
     margin-top: 80px;
     z-index: 100;
     background-color: var(--background-body);
+    overflow-x: hidden;
     transition: 0.5s ease-in-out;
   }
 
@@ -165,6 +165,24 @@ li {
 
   body.noscroll {
     overflow: hidden;
+  }
+}
+
+@media all and (max-width: 720px) {
+  .header__container {
+    margin: 20px 30px;
+  }
+}
+
+@media all and (max-width: 500px) {
+  .header__container {
+    margin:20px;
+  }
+}
+
+@media all and (max-width: 400px) {
+  .header__container {
+    margin: 20px 16px;
   }
 }
 
@@ -273,6 +291,10 @@ li {
 }
 
 @media all and (max-width: 720px) {
+  .container {
+    margin: 0 30px;
+  }
+
   .enjoy__container {
     padding: 60px 16px;
   }
@@ -280,6 +302,18 @@ li {
   .enjoy__title {
     font-size: 11vw;
     line-height: 115%;
+  }
+}
+
+@media all and (max-width: 500px) {
+  .container {
+    margin: 0 20px;
+  }
+}
+
+@media all and (max-width: 400px) {
+  .container {
+    margin: 0 16px;
   }
 }
 
@@ -304,6 +338,10 @@ li {
   line-height: 125%;
   letter-spacing: 1.5px;
   color: var(--text-dark);
+}
+
+.favorite__title {
+  text-align: center;
 }
 
 .italic {
@@ -347,6 +385,10 @@ li {
   width: 100%;
   max-width: 475px;
   row-gap: 20px;
+}
+
+.slider__wrapper img {
+  width: 100%;
 }
 
 .slider__description {
@@ -393,6 +435,25 @@ li {
 .dot__active {
   background: var(--border-dark);
 }
+
+/* ================= BREAKPOINTS ================= */
+/* For medium devices */
+@media all and (max-width: 768px) {
+  .title {
+    font-size: 7.81vw;
+  }
+}
+
+@media all and (max-width: 700px) {
+  .favorite__slider {
+    justify-content: center;
+  }
+
+  .slider__btn {
+    display: none;
+  }
+}
+
 
 /* ================= ABOUT ================= */
 .about__content {
@@ -572,7 +633,6 @@ li {
 /* For large devices */
 @media all and (max-width: 1200px) {
   .mobile-app__container {
-    margin-top: 74px;
     flex-direction: column;
     row-gap: 100px;
   }

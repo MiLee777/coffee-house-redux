@@ -1,9 +1,9 @@
 export const About = () => {
   return (
-    <section className="about">
+    <section className="about" id="about">
       <div className="container">
         <h2 className="title">
-        Resource is <span className="italic">the perfect and cozy place</span> 
+        Resource is <span className="italic">the perfect and cozy place </span> 
         where you can enjoy a variety of hot beverages, relax, catch up with friends, 
         or get some work done.
         </h2>

@@ -3,7 +3,7 @@ import Video from "../../../assets/video/video.mp4";
 
 export const Enjoy = () => {
   return (
-    <section className="main__enjoy">
+    <section className="main__enjoy" id="enjoy">
       <div className="container enjoy__container">
         <video autoPlay="autoplay"
           loop="loop"
