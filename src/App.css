@@ -239,6 +239,7 @@ li {
 .btn {
   width: 200px;
   border-radius: 100px;
+  color: var(--text-dark);
 }
 
 .enjoy__btn {

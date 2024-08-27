@@ -1,4 +1,4 @@
-import { MenuPage } from "../../MenuPage/MenuPage";
+import { Link } from "react-router-dom";
 import Video from "../../../assets/video/video.mp4";
 
 export const Enjoy = () => {
@@ -23,7 +23,7 @@ export const Enjoy = () => {
             the Coffee House Resource is a popular destination for coffee lovers
             and those seeking a warm and inviting space to enjoy their favorite beverage.
           </p>
-          <a href={ MenuPage } className="btn enjoy__btn"><span>Menu</span></a>
+          <Link to="/menu" className="btn enjoy__btn"><span>Menu</span></Link>
         </div>
       </div>
     </section>
