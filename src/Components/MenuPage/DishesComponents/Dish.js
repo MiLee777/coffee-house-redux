@@ -12,8 +12,17 @@ export const Dish = ({ item }) => {
   const dispatch = useDispatch();
   const [isOpenModalMenu, setIsOpenModalMenu] = useState(false);
 
+  const handleOpenModalMenu = () => {
+    setIsOpenModalMenu(true);
+  }
+
+  const handleAddToCart = (e) => {
+    e.stopPropagation(); 
+    dispatch(addItemToCart({ item, quantity }));
+  };
+
   return (
-    <div className="menu__box" onClick={() => setIsOpenModalMenu(true)}>
+    <div className="menu__box" onClick={ handleOpenModalMenu }>
       <div className="box__img">
         <img src={`../assets/images/menu/${item.img}.jpg`} alt='Menu' />
       </div>
@@ -26,7 +35,7 @@ export const Dish = ({ item }) => {
           <p className="box__content-title">${item.price}</p>
           <Quantity quantity={quantity} setQuantity={setQuantity} />
           <button className="box__content-btn"
-            onClick={() => { dispatch(addItemToCart({ item, quantity })) }}
+            onClick={ handleAddToCart }
           >
             Add
           </button>

@@ -1,11 +1,13 @@
+import { useDispatch, useSelector } from "react-redux";
 import { dataMenu } from "../../../../Data/dataMenu";
 import "./style.menu.css";
+import { addItemToMenu, getTotalPriceToMenu } from "../../../../redux/menuSlice";
 
 export const ContentMenu = ({ setIsOpenModalMenu, item }) => {
 
   const dishesToMenu = dataMenu.find(dish => item.id === dish.id);
-
-  console.log(dishesToMenu);
+  const dispatch = useDispatch();
+  const totalPriceToMenu = useSelector(getTotalPriceToMenu);
 
   return (
     <div className="modal-menu__content"
@@ -54,7 +56,7 @@ export const ContentMenu = ({ setIsOpenModalMenu, item }) => {
 
           <div className="modal-menu__total">
             <h3 className="modal-menu__title">Total: </h3>
-            <p className="modal-menu__title">$5.00</p>
+            <p className="modal-menu__title">${ dishesToMenu.price }</p>
           </div>
 
           <div className="modal-menu__alert">
