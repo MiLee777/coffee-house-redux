@@ -1,15 +1,19 @@
-import { useState } from "react"
-import { Quantity } from "../Cart/Quantity"
+import { useState } from "react";
+import { Quantity } from "../Cart/Quantity";
 import { useDispatch } from "react-redux";
 import { addItemToCart } from "../../../redux/cartSlice";
+import { ModalMenu } from "../Modal/Modal.Menu/Modal.Menu";
+import { ContentMenu } from "../Modal/Modal.Menu/Content.Menu";
+import '../Modal/Modal.Menu/style.menu.css'
 
 export const Dish = ({ item }) => {
 
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
+  const [isOpenModalMenu, setIsOpenModalMenu] = useState(false);
 
   return (
-    <div className="menu__box">
+    <div className="menu__box" onClick={() => setIsOpenModalMenu(true)}>
       <div className="box__img">
         <img src={`../assets/images/menu/${item.img}.jpg`} alt='Menu' />
       </div>
@@ -28,6 +32,12 @@ export const Dish = ({ item }) => {
           </button>
         </div>
       </div>
+
+      {isOpenModalMenu &&
+        <ModalMenu setIsOpenModalMenu={setIsOpenModalMenu}>
+          <ContentMenu setIsOpenModalMenu={setIsOpenModalMenu} item={ item } />
+        </ModalMenu>
+      }
     </div>
   )
 }

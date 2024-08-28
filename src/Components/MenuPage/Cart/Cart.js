@@ -3,7 +3,7 @@ import { ModalCart } from "../Modal/Modal.Cart/Modal.Cart";
 import { ContentCart } from "../Modal/Modal.Cart/Content.Cart";
 import { useSelector } from "react-redux";
 import { getTotalQuantity } from "../../../redux/cartSlice";
-import '../Modal/Modal.Cart/style.cart.css'
+import '../Modal/Modal.Cart/style.cart.css';
 
 export const Cart = () => {
 

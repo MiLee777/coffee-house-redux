@@ -21,7 +21,7 @@ export const dataMenu =
         add: "1.00"
       }
     },
-    "additives": [
+    additives: [
       {
         name: "Sugar",
         add: "0.50"
@@ -58,7 +58,7 @@ export const dataMenu =
         add: "1.00"
       }
     },
-    "additives": [
+    additives: [
       {
         name: "Sugar",
         add: "0.50"
@@ -95,7 +95,7 @@ export const dataMenu =
         add: "1.00"
       }
     },
-    "additives": [
+    additives: [
       {
         name: "Sugar",
         add: "0.50"
@@ -132,7 +132,7 @@ export const dataMenu =
         add: "1.00"
       }
     },
-    "additives": [
+    additives: [
       {
         name: "Sugar",
         add: "0.50"
@@ -169,7 +169,7 @@ export const dataMenu =
         add: "1.00"
       }
     },
-    "additives": [
+    additives: [
       {
         name: "Sugar",
         add: "0.50"
@@ -206,7 +206,7 @@ export const dataMenu =
         add: "1.00"
       }
     },
-    "additives": [
+    additives: [
       {
         name: "Sugar",
         add: "0.50"
@@ -243,7 +243,7 @@ export const dataMenu =
         add: "1.00"
       }
     },
-    "additives": [
+    additives: [
       {
         name: "Sugar",
         add: "0.50"
@@ -280,7 +280,7 @@ export const dataMenu =
         add: "1.00"
       }
     },
-    "additives": [
+    additives: [
       {
         name: "Sugar",
         add: "0.50"
@@ -317,7 +317,7 @@ export const dataMenu =
         add: "1.00"
       }
     },
-    "additives": [
+    additives: [
       {
         name: "Sugar",
         add: "0.50"
@@ -354,7 +354,7 @@ export const dataMenu =
         add: "1.00"
       }
     },
-    "additives": [
+    additives: [
       {
         name: "Sugar",
         add: "0.50"
@@ -391,7 +391,7 @@ export const dataMenu =
         add: "1.00"
       }
     },
-    "additives": [
+    additives: [
       {
         name: "Sugar",
         add: "0.50"
@@ -428,7 +428,7 @@ export const dataMenu =
         add: "1.00"
       }
     },
-    "additives": [
+    additives: [
       {
         name: "Sugar",
         add: "0.50"
@@ -465,7 +465,7 @@ export const dataMenu =
         add: "1.00"
       }
     },
-    "additives": [
+    additives: [
       {
         name: "Berries",
         add: "0.50"
@@ -502,7 +502,7 @@ export const dataMenu =
         add: "1.00"
       }
     },
-    "additives": [
+    additives: [
       {
         name: "Berries",
         add: "0.50"
@@ -539,7 +539,7 @@ export const dataMenu =
         add: "1.00"
       }
     },
-    "additives": [
+    additives: [
       {
         name: "Berries",
         add: "0.50"
@@ -576,7 +576,7 @@ export const dataMenu =
         add: "1.00"
       }
     },
-    "additives": [
+    additives: [
       {
         name: "Berries",
         add: "0.50"
@@ -613,7 +613,7 @@ export const dataMenu =
         add: "1.00"
       }
     },
-    "additives": [
+    additives: [
       {
         name: "Berries",
         add: "0.50"
@@ -650,7 +650,7 @@ export const dataMenu =
         add: "1.00"
       }
     },
-    "additives": [
+    additives: [
       {
         name: "Berries",
         add: "0.50"
@@ -687,7 +687,7 @@ export const dataMenu =
         add: "1.00"
       }
     },
-    "additives": [
+    additives: [
       {
         name: "Berries",
         add: "0.50"
@@ -724,7 +724,7 @@ export const dataMenu =
         add: "1.00"
       }
     },
-    "additives": [
+    additives: [
       {
         name: "Berries",
         add: "0.50"
