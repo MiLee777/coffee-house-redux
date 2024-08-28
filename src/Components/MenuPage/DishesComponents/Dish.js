@@ -33,7 +33,7 @@ export const Dish = ({ item }) => {
         </div>
         <div className="box__content-add">
           <p className="box__content-title">${item.price}</p>
-          <Quantity quantity={quantity} setQuantity={setQuantity} />
+          <Quantity quantity={quantity} setQuantity={setQuantity}/>
           <button className="box__content-btn"
             onClick={ handleAddToCart }
           >

@@ -12,7 +12,7 @@ export const Quantity = ({ quantity, setQuantity }) => {
   }
 
   return (
-    <div className="menu__quantity">
+    <div className="menu__quantity" onClick={(e) => e.stopPropagation()}>
       <button onClick={removeQuantity} className="quantity-btn"> - </button>
       <span className="quantity">{quantity}</span>
       <button onClick={addQuantity} className="quantity-btn"> + </button>

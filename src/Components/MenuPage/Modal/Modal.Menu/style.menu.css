@@ -90,9 +90,15 @@
   border: 1px solid var(--border-light);
   border-radius: 100px;
   padding: 8px 16px 8px 8px;
+  transition: 0.5s ease-in-out;
 }
 
-.option {
+.option__btn:hover,
+.option__btn_active {
+  background: var(--background-container);
+}
+
+.option__btn .option {
   width: 30px;
   height: 30px;
   display: flex;
@@ -106,10 +112,22 @@
   line-height: 150%;
   text-align: center;
   color: var(--text-dark);
+  transition: 0.5s ease-in-out;
+}
+
+.option__btn:hover .option,
+.option__btn .option_active {
+  background: var(--text-light);
 }
 
 .option__btn span {
   font-weight: 600;
+  transition: 0.5s ease-in-out;
+}
+
+.option__btn:hover .modal-menu__text,
+.option__btn .modal-menu__text_active  {
+  color: var(--text-light);
 }
 
 .modal-menu__total {

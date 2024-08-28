@@ -3,31 +3,21 @@ import { createSlice } from "@reduxjs/toolkit";
 export const menuSlice = createSlice({
   name: "menu",
   initialState: {
-    menuItems: [],
-    totalPriceToMenu: 0,
+    selectedCategorySize: "s",
+    selectedCategoryAdditives: ""
   },
   reducers: {
-    addItemToMenu: (state, action) => {
-      const { price, size, additives } = action.payload;
+    filterCategorySize: (state, action) => {
+      state.selectedCategorySize = action.payload
+    },
 
-      // Вычисление общей цены элемента с учётом размера и добавок
-      const basePrice = parseFloat(price); // Начальная цена
-      const sizePrice = parseFloat(size.add); // Добавочная цена за выбранный размер
-      const additivesPrice = additives.reduce((total, additive) => total + parseFloat(additive.add), 0); // Сумма всех добавок
-
-      const totalItemPrice = basePrice + sizePrice + additivesPrice;
-
-      // Добавление новой позиции в меню
-      state.menuItems.push({ ...action.payload, totalPrice: totalItemPrice });
-
-      // Обновление общей суммы
-      state.totalPriceToMenu += totalItemPrice;
+    filterCategoryAdditives: (state, action) => {
+      state.selectedCategoryAdditives = action.payload
     }
   }
 })
 
-export const getTotalPriceToMenu = state => state.menu.totalPriceToMenu;
-
-export const { addItemToMenu } = menuSlice.actions;
-export const getMenuItems = state => state.menu.menuItems;
+export const { filterCategorySize, filterCategoryAdditives } = menuSlice.actions;
+export const getSelectedCategorySize = state => state.menu.selectedCategorySize;
+export const getSelectedCategoryAdditives = state => state.menu.selectedCategoryAdditives;
 export default menuSlice.reducer;

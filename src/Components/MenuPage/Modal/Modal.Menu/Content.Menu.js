@@ -1,13 +1,16 @@
 import { useDispatch, useSelector } from "react-redux";
 import { dataMenu } from "../../../../Data/dataMenu";
 import "./style.menu.css";
-import { addItemToMenu, getTotalPriceToMenu } from "../../../../redux/menuSlice";
+import { filterCategoryAdditives, filterCategorySize, getSelectedCategoryAdditives, getSelectedCategorySize } from "../../../../redux/menuSlice";
+
 
 export const ContentMenu = ({ setIsOpenModalMenu, item }) => {
 
   const dishesToMenu = dataMenu.find(dish => item.id === dish.id);
   const dispatch = useDispatch();
-  const totalPriceToMenu = useSelector(getTotalPriceToMenu);
+  const selectedCategorySize = useSelector(getSelectedCategorySize);
+  const selectedCategoryAdditives = useSelector(getSelectedCategoryAdditives)
+
 
   return (
     <div className="modal-menu__content"
@@ -26,11 +29,13 @@ export const ContentMenu = ({ setIsOpenModalMenu, item }) => {
             <div className="option__btns">
               {Object.entries(dishesToMenu.sizes).map(([key, size]) => {
                 return (
-                  <div className="option__btn" key={key}>
-                    <div className="option">
+                  <div onClick={() => {dispatch(filterCategorySize(key))}}
+                  className={`option__btn ${ selectedCategorySize === key ? "option__btn_active" : "" }`}
+                  key={key}>
+                    <div className={`option ${ selectedCategorySize === key ? "option_active" : "" }`}>
                       {key.toLocaleUpperCase()}
                     </div>
-                    <span className="modal-menu__text">{size.size}</span>
+                    <span className={`modal-menu__text ${ selectedCategorySize === key ? "modal-menu__text_active" : "" }`}>{size.size}</span>
                   </div>
                 )
               })}
@@ -43,11 +48,13 @@ export const ContentMenu = ({ setIsOpenModalMenu, item }) => {
                 const numericKey = parseInt(key, 10);
                 const adjustedKey = isNaN(numericKey) ? key : numericKey + 1;
                 return (
-                  <div className="option__btn" key={key}>
-                    <div className="option">
+                  <div onClick={() => {dispatch(filterCategoryAdditives(key))}} 
+                  className={`option__btn ${ selectedCategoryAdditives === key ? "option__btn_active" : "" }`} 
+                  key={key}>
+                    <div className={`option ${ selectedCategoryAdditives === key ? "option_active" : "" }`}>
                       {adjustedKey}
                     </div>
-                    <span className="modal-menu__text">{additive.name}</span>
+                    <span className={`modal-menu__text ${ selectedCategoryAdditives === key ? "modal-menu__text_active" : "" }`}>{additive.name}</span>
                   </div>
                 )
               })}
