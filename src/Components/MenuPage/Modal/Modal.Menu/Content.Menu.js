@@ -1,7 +1,7 @@
 import { useDispatch, useSelector } from "react-redux";
 import { dataMenu } from "../../../../Data/dataMenu";
 import "./style.menu.css";
-import { filterCategoryAdditives, filterCategorySize, getSelectedCategoryAdditives, getSelectedCategorySize } from "../../../../redux/menuSlice";
+import { addItemToTotal, filterCategoryAdditives, filterCategorySize, getSelectedCategoryAdditives, getSelectedCategorySize, getTotalMenuPrice } from "../../../../redux/menuSlice";
 
 
 export const ContentMenu = ({ setIsOpenModalMenu, item }) => {
@@ -9,7 +9,9 @@ export const ContentMenu = ({ setIsOpenModalMenu, item }) => {
   const dishesToMenu = dataMenu.find(dish => item.id === dish.id);
   const dispatch = useDispatch();
   const selectedCategorySize = useSelector(getSelectedCategorySize);
-  const selectedCategoryAdditives = useSelector(getSelectedCategoryAdditives)
+  const selectedCategoryAdditives = useSelector(getSelectedCategoryAdditives);
+
+  const totalMenuPrice = useSelector(getTotalMenuPrice);
 
 
   return (
@@ -29,7 +31,10 @@ export const ContentMenu = ({ setIsOpenModalMenu, item }) => {
             <div className="option__btns">
               {Object.entries(dishesToMenu.sizes).map(([key, size]) => {
                 return (
-                  <div onClick={() => {dispatch(filterCategorySize(key))}}
+                  <div onClick={() => {dispatch(filterCategorySize(key));
+                    dispatch(addItemToTotal(dishesToMenu));
+                  }}
+
                   className={`option__btn ${ selectedCategorySize === key ? "option__btn_active" : "" }`}
                   key={key}>
                     <div className={`option ${ selectedCategorySize === key ? "option_active" : "" }`}>
@@ -48,7 +53,9 @@ export const ContentMenu = ({ setIsOpenModalMenu, item }) => {
                 const numericKey = parseInt(key, 10);
                 const adjustedKey = isNaN(numericKey) ? key : numericKey + 1;
                 return (
-                  <div onClick={() => {dispatch(filterCategoryAdditives(key))}} 
+                  <div onClick={() => {dispatch(filterCategoryAdditives(key));
+                    dispatch(addItemToTotal(dishesToMenu));
+                  }} 
                   className={`option__btn ${ selectedCategoryAdditives === key ? "option__btn_active" : "" }`} 
                   key={key}>
                     <div className={`option ${ selectedCategoryAdditives === key ? "option_active" : "" }`}>
@@ -63,7 +70,7 @@ export const ContentMenu = ({ setIsOpenModalMenu, item }) => {
 
           <div className="modal-menu__total">
             <h3 className="modal-menu__title">Total: </h3>
-            <p className="modal-menu__title">${ dishesToMenu.price }</p>
+            <p className="modal-menu__title">${ totalMenuPrice }</p>
           </div>
 
           <div className="modal-menu__alert">

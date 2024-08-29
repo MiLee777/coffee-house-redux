@@ -11,7 +11,7 @@ export const CartItem = ({ cartItem }) => {
   return (
     <div className="content">
       <div className="content__box">
-        <p className="content__text content__price">Price: ${price}</p>
+        <p className="content__text content__price">Price: ${ price }</p>
         <div className="content__info">
           <p className="content__text content__name">{dishesToCart.name}</p>
           <p className="content__text content__portions">{cartItem.quantity} portion(s)</p>
