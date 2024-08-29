@@ -1,7 +1,12 @@
 import { useDispatch, useSelector } from "react-redux";
 import { dataMenu } from "../../../../Data/dataMenu";
 import "./style.menu.css";
-import { addItemToTotal, filterCategoryAdditives, filterCategorySize, getSelectedCategoryAdditives, getSelectedCategorySize, getTotalMenuPrice } from "../../../../redux/menuSlice";
+import { addItemToTotal, 
+  filterCategoryAdditives, 
+  filterCategorySize, 
+  getSelectedCategoryAdditives, 
+  getSelectedCategorySize, 
+  getTotalMenuPrice } from "../../../../redux/menuSlice";
 
 
 export const ContentMenu = ({ setIsOpenModalMenu, item }) => {
@@ -12,7 +17,6 @@ export const ContentMenu = ({ setIsOpenModalMenu, item }) => {
   const selectedCategoryAdditives = useSelector(getSelectedCategoryAdditives);
 
   const totalMenuPrice = useSelector(getTotalMenuPrice);
-
 
   return (
     <div className="modal-menu__content"
@@ -70,7 +74,7 @@ export const ContentMenu = ({ setIsOpenModalMenu, item }) => {
 
           <div className="modal-menu__total">
             <h3 className="modal-menu__title">Total: </h3>
-            <p className="modal-menu__title">${ totalMenuPrice }</p>
+            <p className="modal-menu__title">${ (parseFloat(totalMenuPrice) + parseFloat(dishesToMenu.price)).toFixed(2) }</p>
           </div>
 
           <div className="modal-menu__alert">
