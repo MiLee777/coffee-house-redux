@@ -787,7 +787,7 @@ li {
   .footer__contact {
     display: flex;
     flex-direction: column;
-    row-gap: 100px;
+    row-gap: 50px;
   }
 
   .contact__info {
@@ -799,9 +799,5 @@ li {
 @media all and (max-width: 500px) {
   .footer__container {
     padding: 60px 16px;
-  }
-
-  .contact__info {
-    margin-top: 42px;
   }
 }

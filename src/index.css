@@ -188,3 +188,11 @@
 .cart__content {
   display: flex;
 }
+
+/* ================= BREAKPOINTS ================= */
+/* For medium devices */
+@media all and (max-width: 768px) {
+  .menu__title {
+    font-size: 7.81vw;
+  }
+}
