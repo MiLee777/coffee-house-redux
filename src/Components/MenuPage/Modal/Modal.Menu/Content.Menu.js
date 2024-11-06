@@ -7,7 +7,6 @@ import { CategoryAdditives } from "./CategoryAdditives";
 
 
 export const ContentMenu = ({ setIsOpenModalMenu, item }) => {
-
   const dishesToMenu = dataMenu.find(dish => item.id === dish.id);
 
   const totalMenuPrice = useSelector(getTotalMenuPrice);
@@ -29,7 +28,11 @@ export const ContentMenu = ({ setIsOpenModalMenu, item }) => {
             <div className="option__btns">
               {Object.entries(dishesToMenu.sizes).map(([key, size]) => {
                 return (
-                  <CategorySize dishesToMenu={ dishesToMenu } sizeKey={ key } size={ size } />
+                  <CategorySize
+                    // key={key}
+                    dishesToMenu={dishesToMenu}
+                    sizeKey={key}
+                    size={size} />
                 )
               })}
             </div>
@@ -41,7 +44,11 @@ export const ContentMenu = ({ setIsOpenModalMenu, item }) => {
                 const numericKey = parseInt(key, 10);
                 const adjustedKey = isNaN(numericKey) ? key : numericKey + 1;
                 return (
-                  <CategoryAdditives dishesToMenu={ dishesToMenu } additiveKey={ key } additive={ additive } adjustedKey={ adjustedKey } />
+                  <CategoryAdditives 
+                  dishesToMenu={dishesToMenu} 
+                  additiveKey={key} 
+                  additive={additive} 
+                  adjustedKey={adjustedKey} />
                 )
               })}
             </div>
@@ -49,7 +56,7 @@ export const ContentMenu = ({ setIsOpenModalMenu, item }) => {
 
           <div className="modal-menu__total">
             <h3 className="modal-menu__title">Total: </h3>
-            <p className="modal-menu__title">${ (parseFloat(totalMenuPrice) + parseFloat(dishesToMenu.price)).toFixed(2) }</p>
+            <p className="modal-menu__title">${(parseFloat(totalMenuPrice) + parseFloat(dishesToMenu.price)).toFixed(2)}</p>
           </div>
 
           <div className="modal-menu__alert">

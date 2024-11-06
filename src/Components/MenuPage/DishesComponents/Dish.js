@@ -4,10 +4,9 @@ import { useDispatch } from "react-redux";
 import { addItemToCart } from "../../../redux/cartSlice";
 import { ModalMenu } from "../Modal/Modal.Menu/Modal.Menu";
 import { ContentMenu } from "../Modal/Modal.Menu/Content.Menu";
-import '../Modal/Modal.Menu/style.menu.css'
+import '../Modal/Modal.Menu/style.menu.css';
 
 export const Dish = ({ item }) => {
-
   const [quantity, setQuantity] = useState(1);
   const dispatch = useDispatch();
   const [isOpenModalMenu, setIsOpenModalMenu] = useState(false);
@@ -17,12 +16,12 @@ export const Dish = ({ item }) => {
   }
 
   const handleAddToCart = (e) => {
-    e.stopPropagation(); 
+    e.stopPropagation();
     dispatch(addItemToCart({ item, quantity }));
   };
 
   return (
-    <div className="menu__box" onClick={ handleOpenModalMenu }>
+    <div className="menu__box" onClick={handleOpenModalMenu}>
       <div className="box__img">
         <img src={`../assets/images/menu/${item.img}.jpg`} alt='Menu' />
       </div>
@@ -33,9 +32,9 @@ export const Dish = ({ item }) => {
         </div>
         <div className="box__content-add">
           <p className="box__content-title">${item.price}</p>
-          <Quantity quantity={quantity} setQuantity={setQuantity}/>
+          <Quantity quantity={quantity} setQuantity={setQuantity} />
           <button className="box__content-btn"
-            onClick={ handleAddToCart }
+            onClick={handleAddToCart}
           >
             Add
           </button>
@@ -44,7 +43,7 @@ export const Dish = ({ item }) => {
 
       {isOpenModalMenu &&
         <ModalMenu setIsOpenModalMenu={setIsOpenModalMenu}>
-          <ContentMenu setIsOpenModalMenu={setIsOpenModalMenu} item={ item } />
+          <ContentMenu setIsOpenModalMenu={setIsOpenModalMenu} item={item} />
         </ModalMenu>
       }
     </div>

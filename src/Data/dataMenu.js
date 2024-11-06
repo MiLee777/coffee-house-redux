@@ -10,29 +10,35 @@ export const dataMenu =
     sizes: {
       s: {
         size: "200 ml",
-        add: "0.00"
+        add: "0.00",
+        isOrder: false
       },
       m: {
         size: "300 ml",
-        add: "0.50"
+        add: "0.50",
+        isOrder: false
       },
       l: {
         size: "400 ml",
-        add: "1.00"
+        add: "1.00",
+        isOrder: false
       }
     },
     additives: [
       {
         name: "Sugar",
-        add: "0.50"
+        add: "0.50",
+        isOrder: false
       },
       {
         name: "Cinnamon",
-        add: "0.50"
+        add: "0.50",
+        isOrder: false
       },
       {
         name: "Syrup",
-        add: "0.50"
+        add: "0.50",
+        isOrder: false
       }
     ]
   },
@@ -47,29 +53,35 @@ export const dataMenu =
     sizes: {
       s: {
         size: "200 ml",
-        add: "0.00"
+        add: "0.00",
+        isOrder: false
       },
       m: {
         size: "300 ml",
-        add: "0.50"
+        add: "0.50",
+        isOrder: false
       },
       l: {
         size: "400 ml",
-        add: "1.00"
+        add: "1.00",
+        isOrder: false
       }
     },
     additives: [
       {
         name: "Sugar",
-        add: "0.50"
+        add: "0.50",
+        isOrder: false
       },
       {
         name: "Cinnamon",
-        add: "0.50"
+        add: "0.50",
+        isOrder: false
       },
       {
         name: "Syrup",
-        add: "0.50"
+        add: "0.50",
+        isOrder: false
       }
     ]
   },
@@ -84,29 +96,35 @@ export const dataMenu =
     sizes: {
       s: {
         size: "200 ml",
-        add: "0.00"
+        add: "0.00",
+        isOrder: false
       },
       m: {
         size: "300 ml",
-        add: "0.50"
+        add: "0.50",
+        isOrder: false
       },
       l: {
         size: "400 ml",
-        add: "1.00"
+        add: "1.00",
+        isOrder: false
       }
     },
     additives: [
       {
         name: "Sugar",
-        add: "0.50"
+        add: "0.50",
+        isOrder: false
       },
       {
         name: "Cinnamon",
-        add: "0.50"
+        add: "0.50",
+        isOrder: false
       },
       {
         name: "Syrup",
-        add: "0.50"
+        add: "0.50",
+        isOrder: false
       }
     ]
   },

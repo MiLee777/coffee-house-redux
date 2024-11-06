@@ -38,7 +38,6 @@ export const menuSlice = createSlice({
 
       state.totalMenuPrice = state.menuItems.reduce((total, item) => total + item.totalMenuPrice, 0);
     }
-
   }
 })
 
