@@ -676,8 +676,7 @@ li {
 }
 
 .footer__contact {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  display: flex;
   column-gap: 100px;
 }
 
@@ -783,14 +782,16 @@ li {
   .footer__container {
     padding: 100px 60px;
   }
+}
 
-  .footer__contact {
+@media all and (max-width: 1070px) {
+  footer .footer__contact { 
     display: flex;
     flex-direction: column;
     row-gap: 50px;
   }
 
-  .contact__info {
+  footer .contact__info {
     align-self: flex-start;
   }
 }
