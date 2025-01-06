@@ -13,7 +13,7 @@ export const Dishes = () => {
         .filter(item => {
           return selectedCategory === item.category;
         })
-        .map((item, index) => <Dish item={item} key={index} />)}
+        .map((item) => <Dish item={item} key={item.id} />)}
     </div>
   )
 }

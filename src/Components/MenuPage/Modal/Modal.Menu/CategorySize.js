@@ -1,20 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
-import { addItemToTotal, filterCategorySize, getSelectedCategorySize } from "../../../../redux/menuSlice";
-
-export const CategorySize = ({ dishesToMenu, sizeKey, size }) => {
-  const dispatch = useDispatch();
-  const selectedCategorySize = useSelector(getSelectedCategorySize);
-
-  return (
-    <div onClick={() => {
-      dispatch(filterCategorySize(sizeKey));
-      dispatch(addItemToTotal(dishesToMenu));
-    }}
-      className={`option__btn ${selectedCategorySize === sizeKey ? "option__btn_active" : ""}`}>
-      <div className={`option ${selectedCategorySize === sizeKey ? "option_active" : ""}`}>
-        {sizeKey.toLocaleUpperCase()}
-      </div>
-      <span className={`modal-menu__text ${selectedCategorySize === sizeKey ? "modal-menu__text_active" : ""}`}>{size.size}</span>
+export const CategorySize = ({ sizeKey, size, isSelected, onSelect }) => (
+  <div
+    className={`option__btn ${isSelected ? "option__btn_active" : ""}`}
+    onClick={onSelect}
+  >
+    <div className={`option ${isSelected ? "option_active" : ""}`}>
+      {sizeKey.toLocaleUpperCase()}
     </div>
-  )
-}
+    <span className={`modal-menu__text ${isSelected ? "modal-menu__text_active" : ""}`}>{size.size}</span>
+  </div>
+);

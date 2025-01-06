@@ -155,9 +155,7 @@
   color: var(--text-dark);
 }
 
-.modal-menu__btn-close {
-  background-color: var(--background-body);
-  border: 1px solid var(--background-container);
+.modal-menu__btn {
   border-radius: 100px;
   padding: 10px 78px;
   font-family: var(--font-family);
@@ -165,6 +163,17 @@
   font-size: 16px;
   line-height: 150%;
   text-align: center;
+}
+
+.modal-menu__btn-add {
+  background-color: var(--background-container);
+  border: 1px solid var(--background-container);
+  color: var(--background-body);
+}
+
+.modal-menu__btn-close {
+  background-color: var(--background-body);
+  border: 1px solid var(--background-container);
   color: var(--text-dark);
 }
 

@@ -3,52 +3,75 @@ import { createSlice } from "@reduxjs/toolkit";
 export const menuSlice = createSlice({
   name: "menu",
   initialState: {
-    selectedCategorySize: "s",
-    selectedCategoryAdditives: "",
+    menuSelections: {}, // Хранилище состояния для каждого item.id
     totalMenuPrice: 0,
-    menuItems: []
+    menuItems: [], // Список добавленных в корзину элементов
   },
   reducers: {
     filterCategorySize: (state, action) => {
-      state.selectedCategorySize = action.payload;
+      const { itemId, size } = action.payload;
+
+      if (!state.menuSelections[itemId]) {
+        state.menuSelections[itemId] = { selectedCategorySize: size, selectedCategoryAdditives: "" };
+      } else {
+        state.menuSelections[itemId].selectedCategorySize = size;
+      }
+
       state.totalMenuPrice = state.menuItems.reduce((total, item) => {
-        return total + item.sizes[state.selectedCategorySize].add + (state.selectedCategoryAdditives ? item.additives[state.selectedCategoryAdditives].add : 0);
+        const selection = state.menuSelections[item.id] || {};
+        const sizePrice = parseFloat(item.sizes[selection.selectedCategorySize]?.add || 0);
+        const additivesPrice = parseFloat(
+          selection.selectedCategoryAdditives ? item.additives[selection.selectedCategoryAdditives]?.add || 0 : 0
+        );
+        return total + sizePrice + additivesPrice;
       }, 0);
     },
 
     filterCategoryAdditives: (state, action) => {
-      state.selectedCategoryAdditives = action.payload;
+      const { itemId, additive } = action.payload;
+
+      if (!state.menuSelections[itemId]) {
+        state.menuSelections[itemId] = { selectedCategorySize: "s", selectedCategoryAdditives: additive };
+      } else {
+        state.menuSelections[itemId].selectedCategoryAdditives = additive;
+      }
+
       state.totalMenuPrice = state.menuItems.reduce((total, item) => {
-        return total + item.sizes[state.selectedCategorySize].add + (state.selectedCategoryAdditives ? item.additives[state.selectedCategoryAdditives].add : 0);
+        const selection = state.menuSelections[item.id] || {};
+        const sizePrice = parseFloat(item.sizes[selection.selectedCategorySize]?.add || 0);
+        const additivesPrice = parseFloat(
+          selection.selectedCategoryAdditives ? item.additives[selection.selectedCategoryAdditives]?.add || 0 : 0
+        );
+        return total + sizePrice + additivesPrice;
       }, 0);
     },
 
     addItemToTotal: (state, action) => {
-      const { sizes, additives } = action.payload;
-      const sizePrice = parseFloat(sizes[state.selectedCategorySize].add || 0);
-      const additivesPrice = parseFloat(state.selectedCategoryAdditives ? additives[state.selectedCategoryAdditives].add || 0 : 0);
+      const { itemId, sizes, additives } = action.payload;
+
+      const selection = state.menuSelections[itemId] || { selectedCategorySize: "s", selectedCategoryAdditives: "" };
+      const sizePrice = parseFloat(sizes[selection.selectedCategorySize]?.add || 0);
+      const additivesPrice = parseFloat(
+        selection.selectedCategoryAdditives ? additives[selection.selectedCategoryAdditives]?.add || 0 : 0
+      );
 
       const totalMenuPrice = sizePrice + additivesPrice;
 
       state.menuItems.push({
+        id: itemId,
         sizes,
         additives,
         totalMenuPrice,
       });
 
       state.totalMenuPrice = state.menuItems.reduce((total, item) => total + item.totalMenuPrice, 0);
-    }
-  }
-})
+    },
+  },
+});
 
-export const getTotalMenuPrice = (state) => {
-  const total = state.menu.menuItems.reduce((total, menuItem) => {
-    return menuItem.totalMenuPrice + total;
-  }, 0);
-  return total.toFixed(2);
-}
+export const getTotalMenuPrice = (state) => state.menu.totalMenuPrice.toFixed(2);
+export const getMenuSelections = (state) => state.menu.menuSelections;
 
 export const { filterCategorySize, filterCategoryAdditives, addItemToTotal } = menuSlice.actions;
-export const getSelectedCategorySize = state => state.menu.selectedCategorySize;
-export const getSelectedCategoryAdditives = state => state.menu.selectedCategoryAdditives;
+
 export default menuSlice.reducer;
