@@ -1,13 +1,214 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+.menu__container {
+  margin: 0 40px 60px 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 40px;
+  position: relative;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+.menu__title {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 60px;
+  line-height: 125%;
+  text-align: center;
+  color: var(--text-dark);
+}
+
+.menu__detail {
+  font-style: italic;
+  color: var(--text-accent);
+}
+
+.menu__items {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+}
+
+.menu__box {
+  width: 310px;
+  border: 1px solid var(--border-light);
+  border-radius: 40px;
+  cursor: pointer;
+}
+
+.box__img {
+  width: 100%;
+  height: 310px;
+  border-radius: 40px;
+  overflow: hidden;
+}
+
+.menu__box .box__img img {
+  height: 100%;
+  object-fit: cover;
+  transform: scale(1.1);
+  transition: 0.5s ease-in-out;
+}
+
+.menu__box:hover .box__img img {
+  transform: scale(1);
+}
+
+.box__content {
+  margin: 20px;
+  font-family: var(--font-family);
+  color: var(--text-dark);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.box__content-info {
+  height: 114px;
+}
+
+.box__content-title {
+  font-weight: 600;
+  font-size: 24px;
+  line-height: 125%;
+}
+
+.box__content-text {
+  margin-top: 7px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 150%;
+}
+
+.box__content-add {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.box__content-btn {
+  padding: 8px 15px;
+  background: var(--background-container);
+  border: none;
+  border-radius: 5px;
+  color: var(--text-light);
+  cursor: pointer;
+  transition: 0.5s ease-in-out;
+}
+
+.menu__box:hover .box__content .box__content-btn {
+  scale: 1.2;
+}
+
+.menu__categories {
+  display: flex;
+  column-gap: 16px;
+}
+
+.category {
+  padding: 8px 16px 8px 8px;
+  display: inline-flex;
+  align-items: center;
+  column-gap: 8px;
+  border: 1px solid var(--border-light);
+  border-radius: 30px;
+  cursor: pointer;
+  transition: .5s ease-in-out;
+}
+
+.category:hover,
+.category_active {
+  background: var(--background-container)
+}
+
+.category__img {
+  padding: 7px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.category .category__img_inactive {
+  background: var(--border-light);
+  transition: .5s ease-in-out;
+}
+
+.category:hover .category__img,
+.category__img_active  {
+  background: var(--background-body)
+}
+
+.category__title {
+  text-transform: capitalize;
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;;
+}
+
+.category .category__title_inactive {
+  color: var(--text-dark);
+  transition: .5s ease-in-out;
+}
+
+.category:hover .category__title,
+.category__title_active {
+  color: var(--text-light);
+} 
+
+.menu__quantity {
+  display: flex;
+  column-gap: 10px;
+}
+
+.quantity-btn {
+  padding: 5px 10px;
+  background: var(--background-container);
+  border: none;
+  border-radius: 5px;
+  color: var(--text-light);
+  cursor: pointer;
+}
+
+.quantity {
+  font-family: var(--font-family);
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 150%;;
+}
+
+.menu__cart {
+  position: absolute;
+  top: -75px;
+  right: 65px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.cart__content {
+  display: flex;
+}
+
+/* ================= BREAKPOINTS ================= */
+/* For medium devices */
+@media all and (max-width: 768px) {
+  .menu__title {
+    font-size: 7.81vw;
+  }
+
+  .menu__cart {
+    right: 45px;
+  }
+}
+
+/* For small devices */
+@media all and (max-width: 437px) {
+  .menu__categories {
+    flex-direction: column;
+    row-gap: 16px;
+  }
+
+  .menu__cart {
+    right: 25px;
+  }
 }
