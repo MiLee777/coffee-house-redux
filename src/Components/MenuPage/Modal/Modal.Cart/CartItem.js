@@ -6,6 +6,7 @@ export const CartItem = ({ cartItem }) => {
 
   const dishesToCart = dataMenu.find(dish => dish.id === cartItem.id);
   const price = (dishesToCart.price * cartItem.quantity).toFixed(2);
+
   const dispatch = useDispatch();
 
   return (

@@ -1,16 +1,12 @@
 import React from "react";
-import { useDispatch, useSelector } from "react-redux";
-import { filterCategorySize, filterCategoryAdditives, addItemToTotal, getMenuSelections } from "../../../../redux/menuSlice";
-import { dataMenu } from "../../../../Data/dataMenu";
+import { useDispatch } from "react-redux";
+import { filterCategorySize, filterCategoryAdditives } from "../../../../redux/menuSlice";
 import "./style.menu.css";
 import { CategorySize } from "./CategorySize";
 import { CategoryAdditives } from "./CategoryAdditives";
 
-export const ContentMenu = ({ setIsOpenModalMenu, item }) => {
+export const ContentMenu = ({ setIsOpenModalMenu, item, selection, dishesToMenu, calculateTotalPrice }) => {
   const dispatch = useDispatch();
-  const menuSelections = useSelector(getMenuSelections);
-
-  const dishesToMenu = dataMenu.find((dish) => item.id === dish.id);
 
   const handleSizeSelect = (size) => {
     dispatch(filterCategorySize({ itemId: item.id, size }));
@@ -19,13 +15,6 @@ export const ContentMenu = ({ setIsOpenModalMenu, item }) => {
   const handleAdditiveToggle = (additive) => {
     dispatch(filterCategoryAdditives({ itemId: item.id, additive }));
   };
-
-  const handleAddToCart = () => {
-    dispatch(addItemToTotal({ itemId: item.id, sizes: dishesToMenu.sizes, additives: dishesToMenu.additives }));
-    setIsOpenModalMenu(false);
-  };
-
-  const selection = menuSelections[item.id] || { selectedCategorySize: "s", selectedCategoryAdditives: "" };
 
   return (
     <div className="modal-menu__content" onClick={(e) => e.stopPropagation()}>
@@ -75,7 +64,7 @@ export const ContentMenu = ({ setIsOpenModalMenu, item }) => {
           <div className="modal-menu__total">
             <h3 className="modal-menu__title">Total:</h3>
             <p className="modal-menu__title">
-              ${dishesToMenu.price}
+              ${calculateTotalPrice()}
             </p>
           </div>
           <div className="modal-menu__alert">
@@ -101,9 +90,6 @@ export const ContentMenu = ({ setIsOpenModalMenu, item }) => {
               points and enjoy your favorite coffee with up to 20% discount.
             </p>
           </div>
-          <button onClick={handleAddToCart} className="modal-menu__btn modal-menu__btn-add">
-            Add to Cart
-          </button>
           <button onClick={() => setIsOpenModalMenu(false)} className="modal-menu__btn modal-menu__btn-close">
             Close
           </button>

@@ -179,8 +179,8 @@
 
 .menu__cart {
   position: absolute;
-  top: 80px;
-  right: 0;
+  top: -75px;
+  right: 65px;
   padding: 10px;
   cursor: pointer;
 }
@@ -194,5 +194,21 @@
 @media all and (max-width: 768px) {
   .menu__title {
     font-size: 7.81vw;
+  }
+
+  .menu__cart {
+    right: 45px;
+  }
+}
+
+/* For small devices */
+@media all and (max-width: 437px) {
+  .menu__categories {
+    flex-direction: column;
+    row-gap: 16px;
+  }
+
+  .menu__cart {
+    right: 25px;
   }
 }

@@ -8,12 +8,14 @@ export const cartSlice = createSlice({
   reducers: {
     addItemToCart: (state, action) => {
       const timeId = new Date().getTime();
+      const totalPrice = action.payload.quantity * action.payload.item.price; // Расчет цены
+
       state.cartItems.push({
         timeId: timeId,
         id: action.payload.item.id,
         quantity: action.payload.quantity,
-        totalPrice: action.payload.quantity * action.payload.item.price,
-      })
+        totalPrice: totalPrice,
+      });
     },
 
     removeItemFromCart: (state, action) => {

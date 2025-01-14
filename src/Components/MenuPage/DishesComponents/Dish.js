@@ -1,10 +1,13 @@
 import { useState } from "react";
 import { Quantity } from "../Cart/Quantity";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addItemToCart } from "../../../redux/cartSlice";
 import { ModalMenu } from "../Modal/Modal.Menu/Modal.Menu";
 import { ContentMenu } from "../Modal/Modal.Menu/Content.Menu";
 import '../Modal/Modal.Menu/style.menu.css';
+import { dataMenu } from "../../../Data/dataMenu";
+import { getMenuSelections } from "../../../redux/menuSlice";
+
 
 export const Dish = ({ item }) => {
   const [quantity, setQuantity] = useState(1);
@@ -17,7 +20,29 @@ export const Dish = ({ item }) => {
 
   const handleAddToCart = (e) => {
     e.stopPropagation();
-    dispatch(addItemToCart({ item, quantity }));
+
+    const totalPrice = calculateTotalPrice();
+
+    dispatch(addItemToCart({ item, quantity, price: totalPrice }));
+  };
+
+  const dishesToMenu = dataMenu.find((dish) => item.id === dish.id);
+
+  const menuSelections = useSelector(getMenuSelections);
+  const selection = menuSelections[item.id] || { selectedCategorySize: "s", selectedCategoryAdditives: "" };
+
+  // Функция для расчета общей стоимости
+  const calculateTotalPrice = () => {
+    const basePrice = Number(dishesToMenu.price); // Преобразование в число
+    const selectedSize = selection.selectedCategorySize;
+    const sizePrice = Number(dishesToMenu.sizes[selectedSize]?.add || 0); // Цена за размер
+    const additivesPrice = Object.keys(selection.selectedCategoryAdditives || {})
+      .filter((key) => selection.selectedCategoryAdditives[key])
+      .reduce((sum, key) => sum + Number(dishesToMenu.additives[key]?.add || 0), 0); // Цена за добавки
+
+    const totalPrice = basePrice + sizePrice + additivesPrice;
+
+    return totalPrice.toFixed(2);
   };
 
   return (
@@ -31,7 +56,7 @@ export const Dish = ({ item }) => {
           <p className="box__content-text">{item.description}</p>
         </div>
         <div className="box__content-add">
-          <p className="box__content-title">${item.price}</p>
+          <p className="box__content-title">${calculateTotalPrice()}</p>
           <Quantity quantity={quantity} setQuantity={setQuantity} />
           <button className="box__content-btn"
             onClick={handleAddToCart}
@@ -43,7 +68,11 @@ export const Dish = ({ item }) => {
 
       {isOpenModalMenu &&
         <ModalMenu setIsOpenModalMenu={setIsOpenModalMenu}>
-          <ContentMenu setIsOpenModalMenu={setIsOpenModalMenu} item={item} />
+          <ContentMenu setIsOpenModalMenu={setIsOpenModalMenu}
+            item={item}
+            selection={selection}
+            dishesToMenu={dishesToMenu}
+            calculateTotalPrice={calculateTotalPrice} />
         </ModalMenu>
       }
     </div>
